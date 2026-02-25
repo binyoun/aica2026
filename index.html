@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI-Enhanced Pedagogy for Creative Arts | ICAIHE 2026 Workshop</title>
+    <title>AICA 2026 | AI-Enhanced Pedagogy for Creative Arts and Media Education</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg: #0a0a0a;
-            --fg: #e8e4df;
-            --accent: #c9b99a;
-            --muted: #6b6560;
-            --subtle: #1a1918;
+            --bg: #fafaf8;
+            --fg: #1a1a1a;
+            --accent: #2d4a3e;
+            --accent-light: #e8eeeb;
+            --muted: #666;
+            --border: #ddd;
         }
 
         * {
@@ -22,270 +23,310 @@
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Space Grotesk', sans-serif;
             background: var(--bg);
             color: var(--fg);
             line-height: 1.7;
-            font-size: 16px;
+            font-size: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            position: sticky;
+            top: 0;
+            background: var(--bg);
+            border-bottom: 1px solid var(--border);
+            z-index: 100;
+            padding: 0 2rem;
+        }
+
+        nav ul {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            list-style: none;
+            gap: 0;
+        }
+
+        nav a {
+            display: block;
+            padding: 1rem 1.25rem;
+            text-decoration: none;
+            color: var(--fg);
+            font-size: 0.85rem;
+            letter-spacing: 0.02em;
+            border-bottom: 2px solid transparent;
+            transition: all 0.2s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent);
+            border-bottom-color: var(--accent);
         }
 
         /* Header */
         header {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem 3rem;
+            border-bottom: 1px solid var(--border);
         }
 
-        header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(ellipse at 20% 80%, rgba(201, 185, 154, 0.08) 0%, transparent 50%),
-                radial-gradient(ellipse at 80% 20%, rgba(201, 185, 154, 0.05) 0%, transparent 40%);
-            pointer-events: none;
-        }
-
-        .conference-badge {
+        .workshop-label {
             font-size: 0.75rem;
-            letter-spacing: 0.2em;
+            letter-spacing: 0.15em;
             text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 2rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease forwards;
+            color: var(--accent);
+            margin-bottom: 1rem;
         }
 
         header h1 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.5rem, 6vw, 4.5rem);
-            font-weight: 400;
-            line-height: 1.15;
-            max-width: 900px;
-            margin-bottom: 1.5rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.15s forwards;
+            font-family: 'EB Garamond', serif;
+            font-size: 2.5rem;
+            font-weight: 500;
+            line-height: 1.2;
+            margin-bottom: 1rem;
         }
 
         header h1 span {
-            color: var(--accent);
             font-style: italic;
         }
 
         .subtitle {
             font-size: 1.1rem;
             color: var(--muted);
-            max-width: 600px;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.3s forwards;
-        }
-
-        .meta-info {
-            display: flex;
-            gap: 3rem;
-            flex-wrap: wrap;
-            justify-content: center;
-            font-size: 0.9rem;
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.45s forwards;
-        }
-
-        .meta-info div {
-            text-align: center;
-        }
-
-        .meta-info .label {
-            font-size: 0.7rem;
-            letter-spacing: 0.15em;
-            text-transform: uppercase;
-            color: var(--muted);
-            margin-bottom: 0.3rem;
-        }
-
-        .meta-info .value {
-            color: var(--accent);
-        }
-
-        .scroll-indicator {
-            position: absolute;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            animation: fadeUp 0.8s ease 0.6s forwards, float 2s ease-in-out infinite;
-        }
-
-        .scroll-indicator svg {
-            width: 24px;
-            height: 24px;
-            stroke: var(--muted);
-        }
-
-        /* Sections */
-        section {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 6rem 2rem;
-        }
-
-        section h2 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2rem;
-            font-weight: 400;
-            margin-bottom: 2rem;
-            color: var(--accent);
-        }
-
-        section p {
             margin-bottom: 1.5rem;
+        }
+
+        .conference-info {
+            display: inline-block;
+            background: var(--accent-light);
+            padding: 0.75rem 1.25rem;
+            font-size: 0.9rem;
+            border-left: 3px solid var(--accent);
+        }
+
+        .conference-info a {
+            color: var(--accent);
+        }
+
+        /* Main content */
+        main {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 3rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        section:last-child {
+            border-bottom: none;
+        }
+
+        h2 {
+            font-family: 'EB Garamond', serif;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            margin-top: 1.5rem;
+        }
+
+        h3:first-child {
+            margin-top: 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
             color: var(--fg);
-            opacity: 0.9;
         }
 
-        /* Topics */
-        .topics-grid {
+        /* Topics list */
+        .topics-list {
             display: grid;
-            gap: 1px;
-            background: var(--subtle);
-            border: 1px solid var(--subtle);
-            margin: 3rem 0;
+            gap: 0.5rem;
+            margin: 1.5rem 0;
         }
 
-        .topic {
-            background: var(--bg);
-            padding: 1.5rem 2rem;
-            transition: background 0.3s ease;
-        }
-
-        .topic:hover {
-            background: var(--subtle);
+        .topic-item {
+            display: flex;
+            align-items: baseline;
+            gap: 0.75rem;
         }
 
         .topic-number {
+            font-size: 0.75rem;
+            color: var(--accent);
+            font-weight: 600;
+            min-width: 1.5rem;
+        }
+
+        /* Dates table */
+        .dates-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+        .dates-table tr {
+            border-bottom: 1px solid var(--border);
+        }
+
+        .dates-table td {
+            padding: 0.75rem 0;
+            vertical-align: top;
+        }
+
+        .dates-table td:first-child {
+            font-weight: 500;
+            width: 200px;
+            color: var(--accent);
+        }
+
+        /* People grid */
+        .people-section {
+            margin: 2rem 0;
+        }
+
+        .people-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .person-card {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            transition: box-shadow 0.2s;
+        }
+
+        .person-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .person-role {
             font-size: 0.7rem;
-            color: var(--muted);
             letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--accent);
             margin-bottom: 0.5rem;
         }
 
-        .topic h3 {
-            font-family: 'Cormorant Garamond', serif;
+        .person-name {
+            font-family: 'EB Garamond', serif;
             font-size: 1.25rem;
-            font-weight: 400;
+            font-weight: 500;
+            margin-bottom: 0.25rem;
         }
 
-        /* Timeline */
-        .timeline {
-            margin: 3rem 0;
+        .person-name a {
+            color: var(--fg);
+            text-decoration: none;
         }
 
-        .timeline-item {
-            display: grid;
-            grid-template-columns: 140px 1fr;
-            gap: 2rem;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid var(--subtle);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
+        .person-name a:hover {
             color: var(--accent);
         }
 
-        .timeline-event {
-            font-size: 0.95rem;
-        }
-
-        /* Organizer */
-        .organizer {
-            display: flex;
-            gap: 2rem;
-            align-items: flex-start;
-            margin: 3rem 0;
-            padding: 2rem;
-            background: var(--subtle);
-        }
-
-        .organizer-photo {
-            width: 120px;
-            height: 120px;
-            background: linear-gradient(135deg, var(--muted) 0%, var(--bg) 100%);
-            flex-shrink: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 2.5rem;
-            color: var(--accent);
-        }
-
-        .organizer-info h3 {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.5rem;
-            font-weight: 400;
-            margin-bottom: 0.3rem;
-        }
-
-        .organizer-info .role {
+        .person-affiliation {
             font-size: 0.85rem;
             color: var(--muted);
-            margin-bottom: 1rem;
+            margin-bottom: 0.5rem;
         }
 
-        .organizer-info p {
-            font-size: 0.9rem;
-            margin-bottom: 0;
+        .person-email {
+            font-size: 0.8rem;
         }
 
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 8rem 2rem;
-            background: var(--subtle);
-        }
-
-        .cta-section h2 {
-            color: var(--fg);
-        }
-
-        .cta-button {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 1rem 3rem;
-            border: 1px solid var(--accent);
+        .person-email a {
             color: var(--accent);
             text-decoration: none;
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            transition: all 0.3s ease;
         }
 
-        .cta-button:hover {
+        .person-bio {
+            font-size: 0.85rem;
+            color: var(--muted);
+            margin-top: 0.75rem;
+            line-height: 1.6;
+        }
+
+        /* Keynote section */
+        .keynote-card {
+            background: var(--accent-light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .keynote-card .person-role {
+            color: var(--accent);
+        }
+
+        /* Committee list */
+        .committee-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .committee-member {
+            padding: 1rem;
+            background: white;
+            border: 1px solid var(--border);
+        }
+
+        .committee-member .person-name {
+            font-size: 1rem;
+        }
+
+        /* Publication info */
+        .publication-box {
+            background: white;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .publication-box strong {
+            color: var(--accent);
+        }
+
+        /* Contact section */
+        .contact-info {
             background: var(--accent);
-            color: var(--bg);
+            color: white;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-info h2 {
+            color: white;
+        }
+
+        .contact-info a {
+            color: white;
         }
 
         /* Footer */
         footer {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem;
             text-align: center;
-            padding: 3rem 2rem;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: var(--muted);
         }
 
@@ -294,165 +335,248 @@
             text-decoration: none;
         }
 
-        /* Animations */
-        @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes float {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(8px); }
-        }
-
         /* Responsive */
-        @media (max-width: 600px) {
-            .meta-info {
-                gap: 1.5rem;
+        @media (max-width: 768px) {
+            nav ul {
+                flex-wrap: wrap;
             }
 
-            .timeline-item {
+            nav a {
+                padding: 0.75rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            .people-grid {
                 grid-template-columns: 1fr;
-                gap: 0.5rem;
             }
 
-            .organizer {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
+            .dates-table td:first-child {
+                width: auto;
             }
         }
     </style>
 </head>
 <body>
 
-<header>
-    <div class="conference-badge">ICAIHE 2026 Workshop</div>
+<nav>
+    <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#cfp">Call for Papers</a></li>
+        <li><a href="#dates">Important Dates</a></li>
+        <li><a href="#keynotes">Keynote Speakers</a></li>
+        <li><a href="#committee">Committee</a></li>
+    </ul>
+</nav>
+
+<header id="home">
+    <div class="workshop-label">AICA 2026 Workshop</div>
     <h1>AI-Enhanced Pedagogy for <span>Creative Arts</span> and Media Education</h1>
     <p class="subtitle">Process and Cultural Context</p>
-    
-    <div class="meta-info">
-        <div>
-            <div class="label">Conference</div>
-            <div class="value">ICAIHE 2026</div>
-        </div>
-        <div>
-            <div class="label">Location</div>
-            <div class="value">Waseda University, Tokyo</div>
-        </div>
-        <div>
-            <div class="label">Paper Deadline</div>
-            <div class="value">March 8, 2026</div>
-        </div>
-    </div>
-
-    <div class="scroll-indicator">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-        </svg>
+    <div class="conference-info">
+        Part of <a href="https://icaihe.org/" target="_blank">ICAIHE 2026</a> · Waseda University, Tokyo · July 2026
     </div>
 </header>
 
-<section id="about">
-    <h2>About the Workshop</h2>
-    <p>This workshop explores how AI and generative technologies are transforming creative arts and media education—not as replacements for human creativity, but as <em>regenerative partners</em> in ideation, cultural translation, and artistic process.</p>
-    <p>We invite researchers, educators, and practitioners to examine the intersection of AI-enhanced pedagogy and culturally-situated creative practice. How do we teach creativity in the age of generative AI? What pedagogical frameworks emerge when AI becomes a collaborator in artistic ideation? How do cultural contexts—particularly from the Global South—reshape our understanding of AI in arts education?</p>
-    <p>Building on frameworks such as identity-based ideation pedagogy and cross-cultural creative technology education, this workshop seeks papers that critically and constructively engage with AI's role in shaping the next generation of creative practitioners.</p>
+<main>
+
+<section id="intro">
+    <h2>Workshop Introduction</h2>
+    <p>In an era where generative AI tools increasingly permeate creative industries, educators face pressing questions about pedagogy, assessment, and the nature of creative authenticity. This workshop explores how AI and generative technologies are transforming creative arts and media education—examining AI not as a replacement for human creativity, but as a <em>regenerative partner</em> in artistic ideation and process.</p>
+    <p>We aim to bring together researchers, educators, and practitioners from creative arts, media art, music education, animation, and related fields to discuss pedagogical frameworks, cultural contexts, and critical perspectives on AI integration in creative curricula. The workshop particularly welcomes perspectives from the Global South and cross-cultural approaches to AI in arts education.</p>
 </section>
 
-<section id="topics">
-    <h2>Topics of Interest</h2>
-    <div class="topics-grid">
-        <div class="topic">
-            <div class="topic-number">01</div>
-            <h3>AI-enhanced ideation frameworks in creative arts pedagogy</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">02</div>
-            <h3>LLM and generative AI as collaborative partners in arts education</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">03</div>
-            <h3>Culturally-situated approaches to AI in media art education</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">04</div>
-            <h3>AI-enhanced portfolio development and exhibition practices</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">05</div>
-            <h3>Critical perspectives on AI in Global South creative education</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">06</div>
-            <h3>Process-based learning with generative AI tools</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">07</div>
-            <h3>AI in cross-cultural and transnational creative pedagogy</h3>
-        </div>
-        <div class="topic">
-            <div class="topic-number">08</div>
-            <h3>Ethical frameworks for AI integration in arts curricula</h3>
-        </div>
+<section id="cfp">
+    <h2>Call for Papers</h2>
+    <p>We invite submissions exploring how AI and generative technologies are reshaping creative arts pedagogy. Topics of interest include, but are not limited to:</p>
+    
+    <div class="topics-list">
+        <div class="topic-item"><span class="topic-number">01</span> AI-enhanced ideation frameworks in creative arts pedagogy</div>
+        <div class="topic-item"><span class="topic-number">02</span> LLM and generative AI as collaborative partners in arts education</div>
+        <div class="topic-item"><span class="topic-number">03</span> Culturally-situated approaches to AI in media art education</div>
+        <div class="topic-item"><span class="topic-number">04</span> AI-enhanced portfolio development and exhibition practices</div>
+        <div class="topic-item"><span class="topic-number">05</span> Process-based learning with generative AI tools</div>
+        <div class="topic-item"><span class="topic-number">06</span> AI in cross-cultural and transnational creative pedagogy</div>
+        <div class="topic-item"><span class="topic-number">07</span> Ethical frameworks for AI integration in arts curricula</div>
+        <div class="topic-item"><span class="topic-number">08</span> Critical perspectives on AI authorship in creative education</div>
+    </div>
+
+    <h3>Submission Guidelines</h3>
+    <p>Papers should follow the ICAIHE 2026 formatting guidelines. We welcome two categories of submissions:</p>
+    <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li><strong>Full papers:</strong> 12–15 pages, including references</li>
+        <li><strong>Short papers:</strong> 6–8 pages, including references</li>
+    </ul>
+
+    <div class="publication-box">
+        <strong>Publication:</strong> Accepted papers will be published in the <strong>Springer CCIS proceedings</strong> alongside the main conference proceedings.
     </div>
 </section>
 
 <section id="dates">
     <h2>Important Dates</h2>
-    <div class="timeline">
-        <div class="timeline-item">
-            <div class="timeline-date">March 8, 2026</div>
-            <div class="timeline-event">Workshop Paper Submission Deadline</div>
+    <table class="dates-table">
+        <tr>
+            <td>Paper Submission</td>
+            <td>TBA (Extended deadline)</td>
+        </tr>
+        <tr>
+            <td>Author Notification</td>
+            <td>May 1, 2026</td>
+        </tr>
+        <tr>
+            <td>Camera-ready Due</td>
+            <td>May 22, 2026</td>
+        </tr>
+        <tr>
+            <td>Workshop Date</td>
+            <td>During ICAIHE 2026, Waseda University, Tokyo</td>
+        </tr>
+    </table>
+</section>
+
+<section id="keynotes">
+    <h2>Keynote Speakers</h2>
+    
+    <div class="keynote-card">
+        <div class="person-role">Keynote Speaker</div>
+        <div class="person-name"><a href="https://www.sumikwon.com/" target="_blank">Prof. Sumi Kwon</a></div>
+        <div class="person-affiliation">Korea National University of Education, Department of Elementary Education</div>
+        <p class="person-bio">Professor Sumi Kwon is a music educator and pianist at Korea National University of Education. She holds a Doctor of Musical Arts from Manhattan School of Music and a Doctor of Music Education from Teachers College, Columbia University. Her research spans music education, piano pedagogy, and technology integration in arts learning. She serves as Editor-in-Chief of the Korean Journal of Research in Music Education (SCOPUS-indexed).</p>
+    </div>
+
+    <div class="keynote-card">
+        <div class="person-role">Keynote Speaker</div>
+        <div class="person-name"><a href="https://mmuexpert.mmu.edu.my/roopeshsitharan" target="_blank">Dr. Roopesh Sitharan</a></div>
+        <div class="person-affiliation">Multimedia University, Malaysia</div>
+        <p class="person-bio">Dr. Roopesh Sitharan is an educator, researcher, curator, and artist at Multimedia University, Malaysia. His research examines Malaysian contemporary art, new media cultures, and curatorial practice, exploring the boundaries of meaning and value in art and new media. He holds an MFA in Digital Arts and New Media from UC Santa Cruz and a PhD from Goldsmiths, University of London.</p>
+    </div>
+</section>
+
+<section id="committee">
+    <h2>Organizing Committee</h2>
+
+    <div class="people-section">
+        <h3>Workshop Chair</h3>
+        <div class="people-grid">
+            <div class="person-card">
+                <div class="person-role">Chair</div>
+                <div class="person-name"><a href="https://www.rmit.edu.vn/profiles/y/bin-youn" target="_blank">Bin Youn</a></div>
+                <div class="person-affiliation">RMIT University Vietnam<br>School of Communication & Design</div>
+                <div class="person-email"><a href="mailto:bin.youn@rmit.edu.vn">bin.youn@rmit.edu.vn</a></div>
+            </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-date">May 1, 2026</div>
-            <div class="timeline-event">Author Notification</div>
+    </div>
+
+    <div class="people-section">
+        <h3>Co-Chair</h3>
+        <div class="people-grid">
+            <div class="person-card">
+                <div class="person-role">Co-Chair</div>
+                <div class="person-name"><a href="https://www.rmit.edu.vn/profiles/h/patrick-hartono" target="_blank">Patrick Hartono</a></div>
+                <div class="person-affiliation">RMIT University Vietnam<br>School of Communication & Design</div>
+            </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-date">May 15, 2026</div>
-            <div class="timeline-event">Paper Registration Due</div>
+    </div>
+
+    <div class="people-section">
+        <h3>Publication Co-Chair</h3>
+        <div class="people-grid">
+            <div class="person-card">
+                <div class="person-role">Publication Co-Chair</div>
+                <div class="person-name"><a href="https://scholar.google.com/citations?user=yiSg84EAAAAJ&hl=en" target="_blank">Oriana Tio Parahita Nainggolan</a></div>
+                <div class="person-affiliation">Indonesia Institute of the Arts Yogyakarta<br>Department of Music Education</div>
+                <div class="person-email"><a href="mailto:orianatioparahitangl@isi.ac.id">orianatioparahitangl@isi.ac.id</a></div>
+            </div>
         </div>
-        <div class="timeline-item">
-            <div class="timeline-date">May 22, 2026</div>
-            <div class="timeline-event">Camera-ready Submission Due</div>
-        </div>
-        <div class="timeline-item">
-            <div class="timeline-date">TBA</div>
-            <div class="timeline-event">Workshop Date (during ICAIHE 2026)</div>
+    </div>
+
+    <div class="people-section">
+        <h3>Program Committee</h3>
+        <div class="committee-list">
+            <div class="committee-member">
+                <div class="person-name"><a href="https://www.rmit.edu.vn/profiles/k/surendheran-kaliyaperumal" target="_blank">Surendheran Kaliyaperumal</a></div>
+                <div class="person-affiliation">RMIT University Vietnam</div>
+            </div>
+            <div class="committee-member">
+                <div class="person-name"><a href="https://leechietsangcomposer.wordpress.com/bio/" target="_blank">Chie Tsang Lee</a></div>
+                <div class="person-affiliation">University of Malaysia Sabah</div>
+            </div>
+            <div class="committee-member">
+                <div class="person-name"><a href="https://www.dima.ac.kr/?p=49" target="_blank">Prof. Yunkyung Bae</a></div>
+                <div class="person-affiliation">Dong-eui Institute of Media and Arts (DIMA)</div>
+                <div class="person-email"><a href="mailto:vision7yk@dima.ac.kr">vision7yk@dima.ac.kr</a></div>
+            </div>
+            <div class="committee-member">
+                <div class="person-name"><a href="https://www.instagram.com/haloterong/" target="_blank">Mevlied Nahla</a></div>
+                <div class="person-affiliation">Indonesia Institute of the Arts</div>
+                <div class="person-email"><a href="mailto:Mevliednahla@isi.ac.id">Mevliednahla@isi.ac.id</a></div>
+            </div>
+            <div class="committee-member">
+                <div class="person-name">Dr. Monica Lim</div>
+                <div class="person-affiliation">TBA</div>
+            </div>
         </div>
     </div>
 </section>
 
-<section id="organizer">
-    <h2>Workshop Organizer</h2>
-    <div class="organizer">
-        <div class="organizer-photo">BY</div>
-        <div class="organizer-info">
-            <h3>Bin Youn</h3>
-            <div class="role">Associate Lecturer, School of Communication & Design<br>RMIT University Vietnam</div>
-            <p>Bin Youn is a Korean multimedia artist and educator based in Vietnam, whose practice bridges lens-based media, spatial installation, and participatory environments. Her research explores AI-enhanced creative pedagogy, diasporic identity, and cross-cultural technology education. She recently co-moderated the SIGGRAPH DAC SPARKS session "Beyond the Global North: Southeast Asia's New Wave of Generative and Interactive Innovation."</p>
-        </div>
+<section>
+    <div class="contact-info">
+        <h2>Contact</h2>
+        <p>For inquiries about the workshop, please contact:</p>
+        <p><strong>Bin Youn</strong> (Workshop Chair)<br>
+        <a href="mailto:bin.youn@rmit.edu.vn">bin.youn@rmit.edu.vn</a></p>
     </div>
 </section>
 
-<section class="cta-section" id="submit">
-    <h2>Submit Your Paper</h2>
-    <p><strong>Full papers:</strong> 12–15 pages &nbsp;|&nbsp; <strong>Short papers:</strong> 6–8 pages</p>
-    <p>Accepted papers will be published in the <strong>Springer CCIS proceedings</strong><br>alongside the main conference proceedings.</p>
-    <a href="mailto:bin.youn@rmit.edu.vn" class="cta-button">Contact Organizer</a>
-</section>
+</main>
 
 <footer>
-    <p>Part of <a href="https://icaihe.org/" target="_blank">ICAIHE 2026</a> · International Conference on Artificial Intelligence for Health and Education</p>
-    <p style="margin-top: 0.5rem;">Workshop Chair: <a href="mailto:bin.youn@rmit.edu.vn">bin.youn@rmit.edu.vn</a></p>
+    <p>AICA 2026 · Part of <a href="https://icaihe.org/" target="_blank">ICAIHE 2026</a> · International Conference on Artificial Intelligence for Health and Education</p>
+    <p style="margin-top: 0.5rem;">Waseda University, Tokyo · July 2026</p>
 </footer>
+
+<script>
+    // Simple smooth scroll for nav links
+    document.querySelectorAll('nav a').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            const href = this.getAttribute('href');
+            if (href.startsWith('#')) {
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+                // Update active state
+                document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+
+    // Update active nav on scroll
+    window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section[id], header[id]');
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 100;
+            if (scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        document.querySelectorAll('nav a').forEach(a => {
+            a.classList.remove('active');
+            if (a.getAttribute('href') === '#' + current || 
+                (current === 'home' && a.getAttribute('href') === '#home') ||
+                (current === 'intro' && a.getAttribute('href') === '#home')) {
+                a.classList.add('active');
+            }
+        });
+    });
+</script>
 
 </body>
 </html>
